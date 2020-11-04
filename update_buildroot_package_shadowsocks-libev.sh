@@ -12,7 +12,7 @@ git pull
 
 git checkout -b shadowsocks-libev
 
-pushd package/shadowsocks-libev/
+pushd package/shadowsocks-libev/ || exit
 
 curl -s https://api.github.com/repos/shadowsocks/shadowsocks-libev/releases/latest |
   grep browser_download_url |
@@ -31,7 +31,7 @@ shadowsocks_libev_folder_name=$(echo tmp_ss/shadowsocks-libev*)
 
 sha256sum_shadowsocks_libev=$(sha256sum $fileName)
 
-pushd $shadowsocks_libev_folder_name
+pushd "$shadowsocks_libev_folder_name" || exit
 
 sha256sum_copying=$(sha256sum COPYING)
 sha256sum_libbloom_license=$(sha256sum libbloom/LICENSE)
@@ -44,7 +44,7 @@ rm "$fileName"
 echo "$version"
 
 echo "# Locally computed" >shadowsocks-libev.hash
-echo "sha256  $sha256sum_shadowsocks_libev" >> shadowsocks-libev.hash
+echo "sha256  $sha256sum_shadowsocks_libev" >>shadowsocks-libev.hash
 echo '' >>shadowsocks-libev.hash
 echo "# License files, locally calculated" >>shadowsocks-libev.hash
 echo "sha256  $sha256sum_copying" >>shadowsocks-libev.hash
@@ -57,7 +57,6 @@ popd
 
 git add package/shadowsocks-libev/shadowsocks-libev.hash
 git add package/shadowsocks-libev/shadowsocks-libev.mk
-
 
 git config user.name "Min Xu"
 git config user.email xuminready@gmail.com
