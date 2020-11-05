@@ -74,4 +74,4 @@ git config sendemail.smtpserverport 587
 git config sendemail.smtpencryption tls
 git config sendemail.smtpuser xuminready@gmail.com
 
-git send-email --to buildroot@buildroot.org --cc bob --cc alice outgoing/*
+git send-email --to buildroot@buildroot.org outgoing/*
