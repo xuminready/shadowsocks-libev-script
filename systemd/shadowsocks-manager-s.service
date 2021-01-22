@@ -1,0 +1,14 @@
+[Unit]
+Description=ShadowSocks Manager s Service
+After=network-online.target
+
+[Service]
+Type=simple
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+DynamicUser=true
+Restart=always
+ExecStart=/opt/shadowsocks/shadowsocks-manager-s.sh
+
+[Install]
+WantedBy=multi-user.target
