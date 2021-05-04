@@ -18,6 +18,7 @@ CapabilityBoundingSet=CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_BIND_SERVICE
 DynamicUser=true
 Restart=always
+LimitNOFILE=infinity
 ExecStart=/usr/bin/ss-manager -m aes-256-gcm -u --manager-address 127.0.0.1:6001
 
 [Install]
