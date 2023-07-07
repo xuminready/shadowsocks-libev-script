@@ -1,0 +1,16 @@
+[Unit]
+Description=Shadowsocks-manager Service
+After=network-online.target
+
+[Service]
+Type=simple
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+DynamicUser=true
+#User=root
+Restart=always
+LimitNOFILE=infinity
+ExecStart=/opt/shadowsocks/ssmanager -m chacha20-ietf-poly1305 -U --manager-address 0.0.0.0:6002 --dns 127.0.0.1 -6 -s ::
+
+[Install]
+WantedBy=multi-user.target
